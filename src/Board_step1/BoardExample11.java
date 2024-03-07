@@ -130,7 +130,7 @@ public class BoardExample11 {
 	}
 
 	public void clear() {
-		System.out.println("[게시물-전체-삭제]");
+		System.out.println("[게시물 전체 삭제]");
 		boardDAO.clear();
 		// 게시물 목록 출력
 		list();
