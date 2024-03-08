@@ -28,9 +28,9 @@ public class UserDAO {
 			// 연결하기
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xe", "bituser", "1004");
 			conn.setAutoCommit(false);
-			stmt1 = conn.prepareStatement("SELECT * FROM users");
+			stmt1 = conn.prepareStatement("SELECT * FROM users ORDER BY userid");
 			stmt2 = conn.prepareStatement("INSERT INTO users(userid, username, userpassword, userage, usermail) VALUES (?, ?, ?, ?, ?)");
-			stmt3 = conn.prepareStatement("UPDATE users SET userid=?, username=?, userpassword=?, userage = ?, usermail = ? WHERE userid=?");
+			stmt3 = conn.prepareStatement("UPDATE users SET username=?, userpassword=?, userage = ?, usermail = ? WHERE userid=?");
 			stmt4 = conn.prepareStatement("DELETE FROM users WHERE userid=?");
 			stmt5 = conn.prepareStatement("DELETE FROM users");
 			stmt6 = conn.prepareStatement("SELECT * FROM users WHERE userid=?");
@@ -98,12 +98,11 @@ public class UserDAO {
 		int updated = 0;
 		try {
 			// 입력 값을 설정 한다.
-			stmt3.setString(1, user.getUserid());
-			stmt3.setString(2, user.getUsername());
-			stmt3.setString(3, user.getUserpassword());
-			stmt3.setInt(4, user.getUserage());
-			stmt3.setString(5, user.getUsermail());
-			stmt3.setString(6, user.getUserid());
+			stmt3.setString(1, user.getUsername());
+			stmt3.setString(2, user.getUserpassword());
+			stmt3.setInt(3, user.getUserage());
+			stmt3.setString(4, user.getUsermail());
+			stmt3.setString(5, user.getUserid());
 
 			updated = stmt3.executeUpdate();
 

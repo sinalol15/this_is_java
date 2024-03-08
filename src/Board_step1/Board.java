@@ -12,11 +12,15 @@ public class Board {
 	private String bcontent;
 	private String bwriter;
 	private String bdate;
-	public Board(String btitle, String bcontent, String bwriter) {
-		this.btitle = btitle;
-		this.bcontent = bcontent;
-		this.bwriter = bwriter;
+	
+	public Board(int bno, String btitle, String bcontent, String bwriter) {
+		this(bno, btitle, bcontent, bwriter, null);
 	}
+	
+	public Board(String btitle, String bcontent, String bwriter) {
+		this(0, btitle, bcontent, bwriter);
+	}
+	
 	public void print() {
 		   System.out.printf("%-6s%-12s%-12s%-24s%-40s\n"
 				 , bno

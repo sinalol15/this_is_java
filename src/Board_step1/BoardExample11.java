@@ -91,7 +91,7 @@ public class BoardExample11 {
 		System.out.println("보조 메뉴: 1.Update | 2.Delete | 3.List");
 		System.out.print("메뉴 선택: ");
 		int menuNo = scanner.nextInt();
-
+		
 		switch (menuNo) {
 		case 1 -> update(userid);
 		case 2 -> delete(userid);
@@ -117,7 +117,7 @@ public class BoardExample11 {
 		String menuNo = scanner.nextLine();
 
 		if ("1".equals(menuNo)) {
-			boardDAO.update(new Board(title, content, writer));
+			boardDAO.update(new Board(userid, title, content, writer));
 		}
 		// 게시물 목록 출력
 		list();
